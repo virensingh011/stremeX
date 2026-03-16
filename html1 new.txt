@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trending Games Catalog">
+    <title>Game Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        .game-card {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .game-card h2 {
+            margin: 0 0 10px 0;
+        }
+        .game-card a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .game-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Trending Games Catalog</h1>
+    </header>
+    <div class="container" id="gameContainer">
+        <!-- Game entries will go here -->
+        <!-- Example: 
+        <div class="game-card">
+            <h2>Game Name</h2>
+            <p><a href="https://link-to-game.com" target="_blank">Play Now</a></p>
+        </div>
+        -->
+    </div>
+
+    <script>
+        // Example: Adding a game dynamically (optional)
+        const games = [
+            {name: "Example Game 1", url: "https://example.com/game1"},
+            {name: "Example Game 2", url: "https://example.com/game2"}
+        ];
+
+        const container = document.getElementById('gameContainer');
+
+        games.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'game-card';
+            card.innerHTML = `<h2>${game.name}</h2>
+                              <p><a href="${game.url}" target="_blank">Play Now</a></p>`;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
