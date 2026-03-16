@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Trending Games Catalog">
-    <title>Game Catalog</title>
+    <title>Trending Games Catalog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,37 +40,45 @@
         .game-card a:hover {
             text-decoration: underline;
         }
+        #searchBar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Trending Games Catalog</h1>
     </header>
-    <div class="container" id="gameContainer">
-        <!-- Game entries will go here -->
-        <!-- Example: 
-        <div class="game-card">
-            <h2>Game Name</h2>
-            <p><a href="https://link-to-game.com" target="_blank">Play Now</a></p>
+    <div class="container">
+        <input type="text" id="searchBar" placeholder="Search for a game...">
+        <div id="gameContainer">
+            <!-- Example game cards -->
+            <div class="game-card">
+                <h2>Example Game 1</h2>
+                <p><a href="https://example.com/game1" target="_blank">Play Now</a></p>
+            </div>
+            <div class="game-card">
+                <h2>Example Game 2</h2>
+                <p><a href="https://example.com/game2" target="_blank">Play Now</a></p>
+            </div>
         </div>
-        -->
     </div>
 
     <script>
-        // Example: Adding a game dynamically (optional)
-        const games = [
-            {name: "Example Game 1", url: "https://example.com/game1"},
-            {name: "Example Game 2", url: "https://example.com/game2"}
-        ];
+        const searchBar = document.getElementById('searchBar');
+        const gameContainer = document.getElementById('gameContainer');
 
-        const container = document.getElementById('gameContainer');
-
-        games.forEach(game => {
-            const card = document.createElement('div');
-            card.className = 'game-card';
-            card.innerHTML = `<h2>${game.name}</h2>
-                              <p><a href="${game.url}" target="_blank">Play Now</a></p>`;
-            container.appendChild(card);
+        searchBar.addEventListener('input', () => {
+            const filter = searchBar.value.toLowerCase();
+            const cards = gameContainer.getElementsByClassName('game-card');
+            for (let card of cards) {
+                const title = card.getElementsByTagName('h2')[0].textContent.toLowerCase();
+                card.style.display = title.includes(filter) ? '' : 'none';
+            }
         });
     </script>
 </body>
